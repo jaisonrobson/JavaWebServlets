@@ -29,13 +29,10 @@ public class ServletLeitor extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String cpf = session.getAttribute("cpf").toString();
 		String senha = session.getAttribute("senha").toString();
-		
-		ServletContext context = getServletContext();
-		String classe = context.getAttribute("classe").toString();
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -44,7 +41,6 @@ public class ServletLeitor extends HttpServlet {
 		out.println("<BODY>");
 		out.println("CPF: "+cpf);
 		out.println("Senha: "+senha);
-		out.println("Classe: "+classe);
 		out.println(" </BODY>");		
 		out.println("</HTML>");
 		out.flush();
